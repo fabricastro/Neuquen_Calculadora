@@ -1,0 +1,128 @@
+/*! purgecss start ignore */
+:root {
+  --main-color: #092c40;
+}
+
+html {
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  height: calc(var(--vh, 1vh) * 100);
+  background: #fff;
+  transition: 0.7s opacity;
+  line-height: 1.2;
+}
+
+body * {
+  outline: none;
+}
+
+input,
+select {
+  border: none;
+  min-height: 3rem;
+  padding: 0 0.6rem;
+  font-size: 1.1rem;
+  border: 1px solid #ddd !important;
+}
+
+select {
+  -webkit-appearance: none;
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+  background-color: #fff;
+}
+
+label {
+  padding-left: 0.1rem;
+  font-size: 0.95rem;
+}
+
+.mx-datepicker {
+  width: auto;
+}
+
+.mx-input {
+  border: 1px solid #ddd;
+  border: none;
+  height: 3rem;
+  font-size: 1.1rem;
+  box-shadow: none;
+  color: #000;
+}
+
+.heading {
+  font-size: 1.4rem;
+}
+
+.padding {
+  padding-bottom: 5rem;
+}
+
+#contact-whatsapp {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1rem;
+  z-index: 999;
+  border-radius: 50%;
+  height: 3.3rem;
+  width: 3.3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+
+  @media (min-width: 1023px) {
+    right: 1.6rem;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  color: #ccc;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+
+::placeholder {
+  color: #ccc;
+}
+
+header nav {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+html.show-menu {
+  body {
+    overflow: hidden;
+  }
+  header nav {
+    opacity: 1;
+    pointer-events: all;
+  }
+  #close-menu {
+    display: block;
+    height: 2.5rem;
+    right: 1rem;
+    top: 1.75rem;
+  }
+}
+
+/*! purgecss end ignore */

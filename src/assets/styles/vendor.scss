@@ -1,0 +1,22 @@
+/*! purgecss start ignore */
+:root {
+  --swiper-theme-color: var(--accent-color);
+}
+
+.swiper-container-horizontal>.swiper-pagination {
+  position: absolute;
+  bottom: 0;
+}
+
+.product-box {
+  .swiper-container {
+    padding-bottom: 0.5rem;
+  }
+
+  .swiper-container-horizontal>.swiper-pagination {
+    position: absolute;
+    bottom: 3.5rem;
+  }
+}
+
+/*! purgecss end ignore */
