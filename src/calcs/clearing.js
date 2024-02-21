@@ -7,7 +7,6 @@ function sumarDiasHabiles(fecha, dias) {
   while (dias > 0) {
     fechaNueva.setDate(fechaNueva.getDate() + 1)
     let diaSemana = fechaNueva.getDay()
-    console.log(diaSemana)
     let esDiaHabil = diasHabiles.includes(diaSemana) && !esFeriado(fechaNueva, diasFeriados)
 
     if (esDiaHabil) {
@@ -23,8 +22,7 @@ function esFeriado(fecha, diasFeriados) {
   return diasFeriados.includes(fechaStr)
 }
 
-export const diasParaCobrar = fecha => {
-  let fechaCobro = new Date(fecha)
+export const diasParaCobrar = fechaCobro => {
   let fechaCobroFinal = sumarDiasHabiles(fechaCobro, 2)
   let diferenciaDias = Math.ceil((fechaCobroFinal - fechaCobro) / (1000 * 60 * 60 * 24))
   return diferenciaDias

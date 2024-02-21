@@ -175,7 +175,6 @@ export default {
   },
   data() {
     return {
-      clearing: 2,
       cdpTypes: documentTypes,
       selectedCPD: String,
       amount: null,
@@ -221,13 +220,12 @@ export default {
   computed: {
     daysBetween: function() {
       let time
+      let clearing
+      clearing = diasParaCobrar(this.discountDate)
       if (this.dateFrom != null && this.discountDate != null) {
         time = moment(this.discountDate).diff(this.dateFrom, 'days')
-        time += this.clearing
+        time += clearing
       }
-      let fechaIngresada = new Date('2024-03-29')
-      let diasParaCobrarResultado = diasParaCobrar(fechaIngresada)
-      console.log('Días para cobrar:', diasParaCobrarResultado)
       return time
     },
     calcRate: function() {
