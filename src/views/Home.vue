@@ -192,6 +192,7 @@ export default {
     }
   },
   mounted() {
+    this.selectedCPD = this.cdpTypes[0].name
     var acc = document.getElementsByClassName('accordion')
     var i
 
@@ -249,29 +250,14 @@ export default {
     },
     calcSGR: function() {
       let sgrComision = []
-      switch (this.selectedCPD) {
-        case 'CPD PROPIO':
-          sgrComision.push((this.amount * this.cdpTypes[0].comision_anual) / 360) * this.daysBetween
-          sgrComision.push(this.amount * this.cdpTypes[0].minimoPorcentaje)
-          console.log(sgrComision)
-          break
-        case 'CPD TERCERO':
-          sgrComision = 10000
-          break
-        case 'CPD CONTADO INMEDIATO':
-          sgrComision = 50000
-          break
-        default:
-          sgrComision = 0
-      }
-      return sgrComision
-      /*       let values = []
-      values.push(((this.amount * this.sgrAnual) / 360) * this.daysBetween)
-      values.push(this.amount * this.sgrMin)
-      values.push(1500)
-      console.log('VALUES: ', values)
-      console.log(Math.max.apply(Math, values))
-      return Math.max.apply(Math, values) */
+      this.cdpTypes.forEach((type, index) => {
+        if (this.selectedCPD == type.name) {
+          sgrComision.push(this.amount * this.cdpTypes[index].minimoPorcentaje)
+          sgrComision.push((this.amount * this.cdpTypes[index].comision_anual) / 360) * (this.daysBetween * this.amount)
+          sgrComision.push(this.cdpTypes[index].minimoPesos)
+        }
+      })
+      return Math.max.apply(Math, sgrComision)
     },
     calcTotal: function() {
       return this.amount - this.calcRate - (this.calcTariff + this.calcMarket + this.calcTaxes + this.calcSGR + this.calcCajaValores)
