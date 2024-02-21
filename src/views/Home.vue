@@ -166,6 +166,7 @@ import moment from 'moment/src/moment'
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/locale/es'
 import documentTypes from '../data/documentTypes.json'
+import { diasParaCobrar } from '../calcs/clearing.js'
 
 export default {
   name: 'Home',
@@ -224,6 +225,9 @@ export default {
         time = moment(this.discountDate).diff(this.dateFrom, 'days')
         time += this.clearing
       }
+      let fechaIngresada = new Date('2024-03-29')
+      let diasParaCobrarResultado = diasParaCobrar(fechaIngresada)
+      console.log('Días para cobrar:', diasParaCobrarResultado)
       return time
     },
     calcRate: function() {
