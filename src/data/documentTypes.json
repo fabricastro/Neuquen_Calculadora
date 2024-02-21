@@ -1,0 +1,26 @@
+[
+  {
+    "name": "CPD PROPIO",
+    "minimoPesos": 10000,
+    "minimoPorcentaje": 0.03,
+    "comision_anual": 0.05
+  },
+  {
+    "name": "CPD TERCERO",
+    "minimoPesos": 10000,
+    "minimoPorcentaje": 0.02,
+    "comision_anual": 0.05
+  },
+  {
+    "name": "CPD CONTADO INMEDIATO",
+    "minimoPesos": 50000,
+    "minimoPorcentaje": 0.05,
+    "comision_anual": 0.05
+  },
+  {
+    "name": "SIN COMISION",
+    "minimoPesos": 0,
+    "minimoPorcentaje": 0,
+    "comision_anual": 0.05
+  }
+]

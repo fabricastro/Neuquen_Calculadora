@@ -97,11 +97,8 @@
         </div>
         <div class="field flex flex-col mb-5">
           <label for="amount" class="font-light mb-2">Tipo de documento (CDP propio/tercero)</label>
-          <select name="DocumentType" id="document-type" :style="{ 'background-image': 'url(' + require('@/assets/icons/select-arrow.svg') + ')' }">
-            <option>CPD PROPIO</option>
-            <option>CPD TERCERO</option>
-            <option>CPD CONTADO INMEDIATO</option>
-            <option>SIN COMISIÓN</option>
+          <select v-model="selectedCPD" name="DocumentType" id="document-type" :style="{ 'background-image': 'url(' + require('@/assets/icons/select-arrow.svg') + ')' }">
+            <option v-for="(type, index) in this.cdpTypes" :key="index" :value="type.name">{{ type.name }}</option>
           </select>
         </div>
       </div>
@@ -168,6 +165,7 @@
 import moment from 'moment/src/moment'
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/locale/es'
+import documentTypes from '../data/documentTypes.json'
 
 export default {
   name: 'Home',
@@ -177,6 +175,8 @@ export default {
   data() {
     return {
       clearing: 2,
+      cdpTypes: documentTypes,
+      selectedCPD: String,
       amount: null,
       discountDate: moment()
         .add(35, 'days')
@@ -187,8 +187,8 @@ export default {
       tariff: 0.015,
       market: 0.0006,
       taxes: 0.21,
-      sgrMin: 0.01,
-      sgrAnual: 0.04,
+      sgrMin: 0.03,
+      sgrAnual: 0.05,
     }
   },
   mounted() {
@@ -248,12 +248,30 @@ export default {
       return (this.calcTariff + this.calcMarket + this.calcCajaValores) * 0.21
     },
     calcSGR: function() {
-      let values = []
+      let sgrComision = []
+      switch (this.selectedCPD) {
+        case 'CPD PROPIO':
+          sgrComision.push((this.amount * this.cdpTypes[0].comision_anual) / 360) * this.daysBetween
+          sgrComision.push(this.amount * this.cdpTypes[0].minimoPorcentaje)
+          console.log(sgrComision)
+          break
+        case 'CPD TERCERO':
+          sgrComision = 10000
+          break
+        case 'CPD CONTADO INMEDIATO':
+          sgrComision = 50000
+          break
+        default:
+          sgrComision = 0
+      }
+      return sgrComision
+      /*       let values = []
       values.push(((this.amount * this.sgrAnual) / 360) * this.daysBetween)
       values.push(this.amount * this.sgrMin)
       values.push(1500)
-
-      return Math.max.apply(Math, values)
+      console.log('VALUES: ', values)
+      console.log(Math.max.apply(Math, values))
+      return Math.max.apply(Math, values) */
     },
     calcTotal: function() {
       return this.amount - this.calcRate - (this.calcTariff + this.calcMarket + this.calcTaxes + this.calcSGR + this.calcCajaValores)
