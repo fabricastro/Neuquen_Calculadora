@@ -192,6 +192,7 @@ export default {
     }
   },
   mounted() {
+    // Se selecciona como opción por defecto la primera en el Array
     this.selectedCPD = this.cdpTypes[0].name
     var acc = document.getElementsByClassName('accordion')
     var i
@@ -221,9 +222,12 @@ export default {
     daysBetween: function() {
       let time
       let clearing
+      // clearing se obtiene de la funcion que verifica cuantos dias faltan para el cobro
       clearing = diasParaCobrar(this.discountDate)
+
       if (this.dateFrom != null && this.discountDate != null) {
         time = moment(this.discountDate).diff(this.dateFrom, 'days')
+        // A la fecha se le agregan los dos días de clearing(solo dias habiles)
         time += clearing
       }
       return time
