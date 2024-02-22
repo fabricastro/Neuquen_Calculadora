@@ -193,7 +193,7 @@ export default {
   },
   mounted() {
     // Se selecciona como opción por defecto la primera en el Array
-    this.selectedCPD = this.cdpTypes[0].name
+    this.selectedCPD = this.cdpTypes[1].name
     var acc = document.getElementsByClassName('accordion')
     var i
 
