@@ -1,7 +1,7 @@
 <template>
   <header class="bg-main-color px-4 md:px-10 py-6 border-b-10 border-secondary-color flex justify-between items-center">
     <a href="https://www.neuquenpymes.com.ar">
-      <img id="logo" src="@/assets/logo.svg" alt="" class="h-10" />
+      <img id="logo" src="../assets/logo.svg" alt="" class="h-10" />
     </a>
     <img src="@/assets/icons/menu.svg" alt="Menu" class="h-10 width-auto md:hidden" id="menu-trigger" />
     <nav

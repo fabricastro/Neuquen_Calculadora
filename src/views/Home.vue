@@ -263,7 +263,6 @@ export default {
           sgrComision.push(this.cdpTypes[index].minimoPesos)
         }
       })
-      console.log(sgrComision)
       return Math.max.apply(Math, sgrComision)
     },
     calcTotal: function() {

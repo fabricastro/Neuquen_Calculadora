@@ -6,7 +6,7 @@
     </main>
     <footer class="py-16 bg-main-color">
       <div class="container px-5 md:px-5 md:mx-auto flex flex-col md:flex-row items-center md:justify-between">
-        <img src="@/assets/logo.svg" alt="Neuquén Pymes" class="h-10 w-auto mb-8 md:mb-0" />
+        <img src="./assets/logo.svg" alt="Neuquén Pymes" class="h-10 w-auto mb-8 md:mb-0" />
         <div class="flex flex-col md:flex-row text-white">
           <div class="font-bold text-tight text-sm">Seguinos y enterate<br />de tips y novedades!</div>
           <ul class="flex items-center pt-5 md:pt-0 md:pl-5 md:ml-5 md:border-l-2 border-secondary-color">
