@@ -255,10 +255,11 @@ export default {
       this.cdpTypes.forEach((type, index) => {
         if (this.selectedCPD == type.name) {
           sgrComision.push(this.amount * this.cdpTypes[index].minimoPorcentaje)
-          sgrComision.push((this.amount * this.cdpTypes[index].comision_anual) / 360) * (this.daysBetween * this.amount)
+          sgrComision.push((this.cdpTypes[index].comision_anual / 360) * this.daysBetween * this.amount)
           sgrComision.push(this.cdpTypes[index].minimoPesos)
         }
       })
+      console.log(sgrComision)
       return Math.max.apply(Math, sgrComision)
     },
     calcTotal: function() {
