@@ -181,7 +181,7 @@ export default {
       discountDate: moment()
         .add(35, 'days')
         .toDate(), //.toISOString().slice(0, 10),
-      discountRate: '70',
+      discountRate: '40',
       rateOptions: [],
       dateFrom: moment().startOf('day'),
       tariff: 0.015,
